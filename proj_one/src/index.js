@@ -1,18 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import userInput from './userInput/userInput.js';
-import userOutput from './userOutput/userOutput.js';
+//import userInput from './userInput/userInput';
+//import userOutput from './userOutput/userOutput';
 
 ReactDOM.render(
   <React.StrictMode>
-    <userInput />
-    <userOutput />
-    <userOutput />
-    <userOutput />
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );
