@@ -1,6 +1,5 @@
 
 import './App.css';
-import UserInput from './UserInput/userInput';
 import UserOutput from './UserOutput/userOutput';
 import React, {Component} from 'react';
 
@@ -22,11 +21,13 @@ class App extends Component {
  render(){
   return (
     <div className="App">
-      <UserInput changed={this.stateChangeHandlerOne} field={this.state.name}/>
-      <UserInput changed={this.stateChangeHandlerTwo} field={this.state.work}/>
-      <UserOutput name={this.state.name} work={this.state.work}/>
-      <UserOutput name="Ritwik" work="IHM"/>
-      <UserOutput name="Kuntal" work="Faasos"/>
+      <UserOutput name={this.state.name} 
+        work={this.state.work}  
+        nameChanged={this.stateChangeHandlerOne} 
+        workChanged={this.stateChangeHandlerTwo}
+        nameField={this.state.name}
+        workField={this.state.work}
+        stringLength={this.state.name.length}/>
     </div>
   )
  };

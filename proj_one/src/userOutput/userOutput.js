@@ -1,10 +1,18 @@
 import React from 'react';
+import UserInput from '.././UserInput/userInput';
+import Validation from '.././Validation/Validation';
+import '.././User.css';
 
 const userOutput = (props) => {
     return (
-    <div>
+    <div className='User'>
         <p>Hello my name is {props.name}</p>
         <p>I work in {props.work}</p>
+        <UserInput changed={props.nameChanged} field={props.nameField}/>
+        <br />
+        <UserInput changed={props.workChanged} field={props.workField}/>
+        <br/>
+        <Validation stringLength={props.stringLength}/>
     </div>
     );
 };
