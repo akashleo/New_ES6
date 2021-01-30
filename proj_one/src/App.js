@@ -1,36 +1,68 @@
-
-import './App.css';
-import UserOutput from './UserOutput/userOutput';
-import React, {Component} from 'react';
+import "./App.css";
+import UserOutput from "./UserOutput/userOutput";
+import React, { Component } from "react";
 
 class App extends Component {
-  state ={
-    "name" : "Zarin",
-    "work": "Klarna"
+  state = {
+    persons: [
+      { id: "123", name: "Zarin", work: "Klarna" },
+      { id: "465", name: "Akash", work: "Amazon" },
+      { id: "789", name: "Sayan", work: "SwedBank" },
+    ],
+    characterList: "",
   };
 
-  stateChangeHandlerOne = (event) => {
-    this.setState({"name": event.target.value })
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const modifiedPerson = { ...this.state.persons[personIndex] };
+
+    modifiedPerson.name = event.target.value;
+
+    const personsArray = [...this.state.persons];
+    personsArray[personIndex] = modifiedPerson;
+
+    this.setState({ persons: personsArray });
   };
 
-  stateChangeHandlerTwo = (event) => {
-    this.setState({"work": event.target.value })
+  workChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const modifiedPerson = { ...this.state.persons[personIndex] };
+
+    modifiedPerson.work = event.target.value;
+
+    const personsArray = [...this.state.persons];
+    personsArray[personIndex] = modifiedPerson;
+
+    this.setState({ persons: personsArray });
   };
 
+  render() {
+    let persons = this.state.persons;
 
- render(){
-  return (
-    <div className="App">
-      <UserOutput name={this.state.name} 
-        work={this.state.work}  
-        nameChanged={this.stateChangeHandlerOne} 
-        workChanged={this.stateChangeHandlerTwo}
-        nameField={this.state.name}
-        workField={this.state.work}
-        stringLength={this.state.name.length}/>
-    </div>
-  )
- };
+    const userOutput = persons.map((person) => {
+      return (
+        <UserOutput
+          name={person.name}
+          work={person.work}
+          nameChanged={(event) => {
+            this.nameChangedHandler(event, person.id);
+          }}
+          workChanged={(event) => {
+            this.workChangedHandler(event, person.id);
+          }}
+          stringLength={person.name.length}
+        />
+      );
+    });
+
+    return <div className="App">{userOutput}</div>;
+  }
 }
 
 export default App;
