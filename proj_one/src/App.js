@@ -1,5 +1,7 @@
 import "./App.css";
 import UserOutput from "./UserOutput/userOutput";
+import UserInput from "./UserInput/userInput";
+import Char from "./Char/Char";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -42,8 +44,18 @@ class App extends Component {
     this.setState({ persons: personsArray });
   };
 
+  inputChangedHandler = (event) => {
+    const characterListM = event.target.value;
+
+    this.setState({ characterList: characterListM });
+  };
+
   render() {
     let persons = this.state.persons;
+
+    const charList = this.state.characterList.split("").map((ch) => {
+      return <Char character={ch} />;
+    });
 
     const userOutput = persons.map((person) => {
       return (
@@ -60,8 +72,19 @@ class App extends Component {
         />
       );
     });
-
-    return <div className="App">{userOutput}</div>;
+    //
+    return (
+      <div className="App">
+        {userOutput}
+        <br />
+        <UserInput
+          field={this.state.characterList}
+          changed={this.inputChangedHandler}
+        />
+        <br />
+        {charList}
+      </div>
+    );
   }
 }
 

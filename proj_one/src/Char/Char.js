@@ -1,6 +1,6 @@
 import React from "react";
 
-const char = () => {
+const char = (props) => {
   const style = {
     display: "inline-block",
     padding: "16px",
@@ -9,7 +9,7 @@ const char = () => {
     textAlign: "center",
   };
 
-  return <div style={style}></div>;
+  return <div style={style}>{props.character}</div>;
 };
 
 export default char;

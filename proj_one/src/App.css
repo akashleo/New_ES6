@@ -1,7 +1,15 @@
 .App {
   text-align: center;
-  display : flex;
-  justify-content: center;
+  display : inline-block;
+
+}
+
+.red {
+ color: red;
+}
+
+.bold {
+  font-weight :800;
 }
 
 .App-logo {
