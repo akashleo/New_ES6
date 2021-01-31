@@ -4,6 +4,12 @@ import Validation from ".././Validation/Validation";
 import ".././User.css";
 
 const userOutput = (props) => {
+  const styleUser = {
+    border: "2px solid grey",
+    padding: "20px",
+    margin: "10px",
+    width: "400px",
+  };
   return (
     <div className="User">
       <p>Hello my name is {props.name}</p>
